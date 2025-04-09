@@ -210,8 +210,8 @@ function showQuestion(index){
 }
 
 function showQuestionTemplate(index) {
-    return `
-      <h2>${index + 1}. Frage:</h2>
+    return `      
+      <h2>Frage ${index + 1} von ${questions.length}</h2>
       <p>${questions[index].question}</p>
       <p>Punkte: ${questions[index].points}</p>
     `;
@@ -238,7 +238,7 @@ function showAnswerTemplate(index){
   <div class="answer">${buttons}</div>
   <div class="nav-menu">
       <button onclick="showResult()">Result</button>
-      <button onclick="nextQuestion(${index})">Next</button>
+      <button onclick="nextQuestion(${index},)">Next</button>
   </div>
   `;
 }
@@ -266,9 +266,13 @@ function checkAnswer(i, index) {
 }
 
 function nextQuestion(index){
-    let newIndex = index < questions.length - 1 ? index + 1 : 0;   
-    startQuizz(newIndex);
-    hideResult();
+  if (index == questions.length-1){
+    showFinalResult()
+  } else{
+  let newIndex = index < questions.length - 1 ? index + 1 : 0;   
+  startQuizz(newIndex);
+  hideResult();
+  }
 }
 
 function nextPermutation(index){
