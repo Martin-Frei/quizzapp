@@ -1,5 +1,3 @@
-
-
 let questions= [
   {
     "question": "Was ist der Datentyp von NaN in JavaScript?",
@@ -153,9 +151,6 @@ let questions= [
   }
 ];
 
-
-
-
 const permutationsArray = [
     [3, 1, 2, 0],
     [0, 2, 3, 1],
@@ -180,18 +175,12 @@ function showResult(){
 
     let resultShow = document.getElementById("showResult")
     resultShow.innerHTML = showResultTemplate()
-
-    // let overlayOn =document.getElementById("body");
-    // overlayOn.classList.add("overlay");
 }
 
 function hideResult(){
-    let resultOut = document.getElementById("result");
-    resultOut.classList.remove("result-in")
-    resultOut. classList.add("result-out");
-
-    // let overlayOff =document.getElementById("body");
-    // overlayOff.classList.remove("overlay");
+  let resultOut = document.getElementById("result");
+  resultOut.classList.remove("result-in")
+  resultOut. classList.add("result-out");
 }
 
 function showResultTemplate(){
@@ -208,14 +197,10 @@ function showResultTemplate(){
   `
 }
 
-
-
-
-
- function startQuizz(index){
-    showQuestion(index);
-    showAnswer(index);
- }
+function startQuizz(index){
+  showQuestion(index);
+  showAnswer(index);
+}
 
 function showQuestion(index){
     let showQuestion = document.getElementById("questionSection");
@@ -230,54 +215,54 @@ function showQuestionTemplate(index) {
       <p>${questions[index].question}</p>
       <p>Punkte: ${questions[index].points}</p>
     `;
+}
+
+function showAnswer(index){
+  let showAnswer = document.getElementById("answerSection");
+
+  showAnswer.innerHTML =""
+  showAnswer.innerHTML += showAnswerTemplate(index);
+  permutationsCounter = permutationsCounter < permutationsArray.length - 1 ? permutationsCounter + 1 : 0;
+}
+
+function showAnswerTemplate(index){
+  permutationList = permutationsArray[permutationsCounter]
+  let buttons=""
+
+  for (let i = 0; i < 4; i++) {
+    let answerIndex = permutationList[i];
+    buttons += `<button id="button${answerIndex}" onclick="checkAnswer(${answerIndex},${index})">${questions[index].answers[answerIndex]}</button>`;
   }
 
-  function showAnswer(index){
-    let showAnswer = document.getElementById("answerSection");
+  return `
+  <div class="answer">${buttons}</div>
+  <div class="nav-menu">
+      <button onclick="showResult()">Result</button>
+      <button onclick="nextQuestion(${index})">Next</button>
+  </div>
+  `;
+}
 
-    showAnswer.innerHTML =""
-    showAnswer.innerHTML += showAnswerTemplate(index);
-    permutationsCounter = permutationsCounter < permutationsArray.length - 1 ? permutationsCounter + 1 : 0;
+function checkAnswer(i, index) {
+  for (let j = 0; j < 4; j++) {
+    document.getElementById("button" + j).disabled = true;
   }
 
-  function showAnswerTemplate(index){
-    permutationList = permutationsArray[permutationsCounter]
-    let buttons=""
+  if (i === 0) {
+    let greenButton = document.getElementById("button" + i);
+    greenButton.classList.add("greenButton");
+    userResultCounter += questions[index].points;
+  } else {
+    let redButton = document.getElementById("button" + i);
+    redButton.classList.add("redButton")
+    document.getElementById("button" + 0).classList.add("greenButton");
+  }
 
-    for (let i = 0; i < 4; i++) {
-      let answerIndex = permutationList[i];
-      buttons += `<button id="button${answerIndex}" onclick="checkAnswer(${answerIndex},${index})">${questions[index].answers[answerIndex]}</button>`;
-    }
-
-    return `
-    <div class="answer">${buttons}</div>
-    <div class="nav-menu">
-        <button onclick="showResult()">Result</button>
-        <button onclick="nextQuestion(${index})">Next</button>
-    </div>
-    `;
-    }
-
-  function checkAnswer(i, index) {
-    for (let j = 0; j < 4; j++) {
-      document.getElementById("button" + j).disabled = true;
-    }
-
-    if (i === 0) {
-      let greenButton = document.getElementById("button" + i);
-      greenButton.classList.add("greenButton");
-      userResultCounter += questions[index].points;
-    } else {
-      let redButton = document.getElementById("button" + i);
-      redButton.classList.add("redButton")
-      document.getElementById("button" + 0).classList.add("greenButton");
-    }
-
-    if (index === questions.length - 1) {
-      setTimeout(() => {
-        showFinalResult();
-      }, 1000); 
-    }
+  if (index === questions.length - 1) {
+    setTimeout(() => {
+      showFinalResult();
+    }, 1000); 
+  }
 }
 
 function nextQuestion(index){
