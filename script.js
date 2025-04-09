@@ -258,14 +258,11 @@ function showQuestionTemplate(index) {
     `;
     }
 
-  function pointCounter(){
-
-  }
-
   function checkAnswer(i, index) {
     for (let j = 0; j < 4; j++) {
       document.getElementById("button" + j).disabled = true;
     }
+
     if (i === 0) {
       let greenButton = document.getElementById("button" + i);
       greenButton.classList.add("greenButton");
@@ -273,6 +270,13 @@ function showQuestionTemplate(index) {
     } else {
       let redButton = document.getElementById("button" + i);
       redButton.classList.add("redButton")
+      document.getElementById("button" + 0).classList.add("greenButton");
+    }
+
+    if (index === questions.length - 1) {
+      setTimeout(() => {
+        showFinalResult();
+      }, 1000); 
     }
 }
 
@@ -287,3 +291,21 @@ function nextPermutation(index){
     return newIndex;
 }
 
+function showFinalResult() {
+  let answerSection = document.getElementById("answerSection");
+
+  answerSection.innerHTML = `
+    <div class="result-box">
+      <h2>Quiz beendet!</h2>
+      <p>Dein Ergebnis: <strong>${userResultCounter} Punkte</strong> von maximal ${resultCounter} Punkten</p>
+      <button onclick="restartQuiz()">Nochmal spielen</button>
+    </div>
+  `;
+}
+
+function restartQuiz() {
+  resultCounter = 0;
+  userResultCounter = 0;
+  permutationsCounter = 0;
+  startQuizz(0); 
+}

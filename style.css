@@ -71,6 +71,13 @@ body{
     background-color: aqua;
 }
 
+.result-box{
+    width: 700px;
+    height: 800px;
+    padding: auto;
+    font-size: 32px;
+}
+
 .my-table-button{
     font-size: 32px;
     cursor: pointer;
