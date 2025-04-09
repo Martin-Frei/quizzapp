@@ -185,7 +185,7 @@ let questions=[
 ]
 
 const permutationsArray = [
-    [0, 1, 2, 3],
+    [3, 1, 2, 0],
     [0, 2, 3, 1],
     [1, 0, 3, 2],
     [1, 2, 0, 3],
@@ -239,24 +239,25 @@ function showQuestionTemplate(index) {
 
     showAnswer.innerHTML =""
     showAnswer.innerHTML += showAnswerTemplate(index);
+    permutationsCounter ++
   }
 
   function showAnswerTemplate(index){
     permutationList = permutationsArray[permutationsCounter]
     let buttons=""
 
-// permutationsarray =  [0, 1, 2, 3]
+// permutationsarray =  [0, 1, 3, 2]
 
     for (let i = 0; i < 4; i++) {
       let answerIndex = permutationList[i];
-      buttons += `<button id="button${i}" onclick="checkAnswer(${i})">${questions[index].answers[answerIndex]}</button>`;
+      buttons += `<button id="button${answerIndex}" onclick="checkAnswer(${answerIndex})">${questions[index].answers[answerIndex]}</button>`;
     }
 
     return `
     <div class="answer">${buttons}</div>
     <div class="nav-menu">
         <button onclick="showResult()">Result</button>
-        <button onclick="nextQuestion(${index + 1})">Next</button>
+        <button onclick="nextQuestion(${index})">Next</button>
     </div>
     `;
     }
