@@ -1,188 +1,160 @@
 
 
-let questions=[
+let questions= [
   {
     "question": "Was ist der Datentyp von NaN in JavaScript?",
-    "answers": [
-      "Number",
-      "Integer",
-      "Float",
-      "Numeric"
-    ]
+    "answers": ["Number", "Integer", "Float", "Numeric"],
+    "points": 15
   },
   {
     "question": "Wie wird eine anonyme Funktion in JavaScript erstellt?",
-    "answers": [
-      "function() {}",
-      "() => {}",
-      "function(a, b) {}",
-      "function named() {}"
-    ]
+    "answers": ["function() {}", "() => {}", "function(a, b) {}", "function named() {}"],
+    "points": 10
   },
   {
     "question": "Was gibt 'typeof null' in JavaScript zurück?",
-    "answers": [
-      "object",
-      "null",
-      "undefined",
-      "function"
-    ]
+    "answers": ["object", "null", "undefined", "function"],
+    "points": 15
   },
   {
     "question": "Welcher Operator wird verwendet, um den Rest einer Division zu berechnen?",
-    "answers": [
-      "%",
-      "mod",
-      "remainder",
-      "div"
-    ]
+    "answers": ["%", "mod", "remainder", "div"],
+    "points": 10
   },
   {
     "question": "Wie nennt man den Mechanismus, bei dem JavaScript Variablendeklarationen an den Anfang des Scopes verschiebt?",
-    "answers": [
-      "Hoisting",
-      "Lifting",
-      "Elevation",
-      "Upwarding"
-    ]
+    "answers": ["Hoisting", "Lifting", "Elevation", "Upwarding"],
+    "points": 15
   },
   {
     "question": "Was ist der Zweck von 'use strict' in JavaScript?",
-    "answers": [
-      "Es erzwingt einen strengeren Modus zur Fehlererkennung.",
-      "Es deaktiviert alle globalen Variablen zur Fehlererkennung.",
-      "Es optimiert den Code für höhere Geschwindigkeit.",
-      "Es macht den Code kompatibel mit älteren Browsern."
-    ]
+    "answers": ["Es erzwingt einen strengeren Modus zur Fehlererkennung.", "Es deaktiviert alle globalen Variablen zur Fehlererkennung.", "Es optimiert den Code für höhere Geschwindigkeit.", "Es macht den Code kompatibel mit älteren Browsern."],
+    "points": 20
   },
   {
     "question": "Welche Array-Methode transformiert jedes Element in einem Array und gibt ein neues Array zurück?",
-    "answers": [
-      "map()",
-      "forEach()",
-      "filter()",
-      "reduce()"
-    ]
+    "answers": ["map()", "forEach()", "filter()", "reduce()"],
+    "points": 15
   },
   {
     "question": "Was gibt die Methode JSON.stringify() zurück?",
-    "answers": [
-      "Einen JSON-String",
-      "Ein JSON-Objekt",
-      "Ein JSON-Array",
-      "Einen regulären String ohne Formatierung"
-    ]
+    "answers": ["Einen JSON-String", "Ein JSON-Objekt", "Ein JSON-Array", "Einen regulären String ohne Formatierung"],
+    "points": 10
   },
   {
     "question": "Wie nennt man eine Funktion, die sich selbst sofort aufruft?",
-    "answers": [
-      "IIFE (Immediately Invoked Function Expression)",
-      "SIF (Self-invoking function)",
-      "Callback",
-      "Recursive function"
-    ]
+    "answers": ["IIFE (Immediately Invoked Function Expression)", "SIF (Self-invoking function)", "Callback", "Recursive function"],
+    "points": 20
   },
   {
     "question": "Was bedeutet 'Closure' in JavaScript?",
-    "answers": [
-      "Eine Funktion behält Zugriff auf Variablen ihres äußeren Scopes, selbst nachdem dieser abgeschlossen ist.",
-      "Eine Funktion, die Parameter sammelt und dann einen Wert zurückgibt.",
-      "Eine Funktion, die rekursiv aufgerufen wird.",
-      "Ein anderer Begriff für Objektorientierung."
-    ]
-  },
-
-  {
-    "question": "Was macht die Funktion parseInt() in JavaScript?",
-    "answers": [
-      "Sie wandelt einen String in eine Ganzzahl um.",
-      "Sie wandelt einen String in eine Fließkommazahl um.",
-      "Sie parst einen JSON-String in ein Objekt.",
-      "Sie formatiert eine Zahl als String."
-    ]
+    "answers": ["Eine Funktion behält Zugriff auf Variablen ihres äußeren Scopes, selbst nachdem dieser abgeschlossen ist.", "Eine Funktion, die Parameter sammelt und dann einen Wert zurückgibt.", "Eine Funktion, die rekursiv aufgerufen wird.", "Ein anderer Begriff für Objektorientierung."],
+    "points": 25
   },
   {
-    "question": "Welche Methode fügt ein Element am Ende eines Arrays hinzu?",
-    "answers": [
-      "push()",
-      "pop()",
-      "shift()",
-      "unshift()"
-    ]
+    "question": "Was bewirkt 'Array.prototype.filter()'?",
+    "answers": ["Gibt ein neues Array mit allen Elementen zurück, die eine Bedingung erfüllen.", "Filtert ein Array und verändert es direkt.", "Löscht alle falschen Elemente aus dem Array.", "Sortiert das Array in aufsteigender Reihenfolge."],
+    "points": 20
   },
   {
-    "question": "Was ist das Ergebnis von typeof [] in JavaScript?",
-    "answers": [
-      "object",
-      "array",
-      "liste",
-      "undefined"
-    ]
+    "question": "Wie deklariert man eine Konstante in JavaScript?",
+    "answers": ["const x = 5;", "let x = 5;", "var x = 5;", "static x = 5;"],
+    "points": 10
   },
   {
-    "question": "Welches Schlüsselwort wird verwendet, um eine Konstante in JavaScript zu deklarieren?",
-    "answers": [
-      "const",
-      "let",
-      "var",
-      "static"
-    ]
+    "question": "Was ist der Unterschied zwischen 'let' und 'var'?",
+    "answers": ["let hat Blockscope, var nicht.", "var ist moderner als let.", "let kann mehrfach deklariert werden.", "let funktioniert nur in Funktionen."],
+    "points": 15
   },
   {
-    "question": "Wie erstellt man ein neues Promise in JavaScript?",
-    "answers": [
-      "new Promise((resolve, reject) => {})",
-      "Promise.create((resolve, reject) => {})",
-      "new Promise.resolve()",
-      "Promise.then((resolve, reject) => {})"
-    ]
+    "question": "Welche Methode ruft eine Funktion einmal pro Element in einem Array auf?",
+    "answers": ["forEach()", "map()", "reduce()", "filter()"],
+    "points": 10
   },
   {
-    "question": "Was bewirkt der Spread Operator '...' in einem Array?",
-    "answers": [
-      "Er erweitert ein Array in seine einzelnen Elemente.",
-      "Er kombiniert zwei Arrays zu einem.",
-      "Er filtert Elemente aus einem Array heraus.",
-      "Er sortiert ein Array in aufsteigender Reihenfolge."
-    ]
+    "question": "Wie kann man die Länge eines Arrays ermitteln?",
+    "answers": ["array.length", "array.size", "array.count()", "array.length()"],
+    "points": 10
   },
   {
-    "question": "Wie greift man auf das Prototyp eines Objekts in JavaScript zu?",
-    "answers": [
-      "Object.getPrototypeOf(obj)",
-      "obj.prototype",
-      "obj.getPrototype()",
-      "Prototype(obj)"
-    ]
+    "question": "Welche Vergleichsoperatoren prüfen auch den Typ?",
+    "answers": ["===", "==", "=>", "=<"],
+    "points": 10
   },
   {
-    "question": "Worauf bezieht sich 'this' in einer regulären Funktion (nicht einer Arrow-Funktion)?",
-    "answers": [
-      "Auf das Objekt, das die Funktion aufgerufen hat.",
-      "Auf das globale Objekt (window).",
-      "Auf den Kontext der übergeordneten Funktion.",
-      "Auf 'undefined'."
-    ]
+    "question": "Wie kann man einen zufälligen Wert aus einem Array auswählen?",
+    "answers": ["array[Math.floor(Math.random() * array.length)]", "array[random()]", "array.pick()", "array.shuffle()[0]"],
+    "points": 20
   },
   {
-    "question": "Was ist das Ergebnis von [1, 2, 3].map(x => x * 2)?",
-    "answers": [
-      "[2, 4, 6]",
-      "[1, 2, 3, 6]",
-      "[1, 4, 9]",
-      "2, 4, 6"
-    ]
+    "question": "Was ist ein Callback in JavaScript?",
+    "answers": ["Eine Funktion, die als Argument an eine andere Funktion übergeben wird.", "Eine Methode zum Zurückrufen von Daten aus einer API.", "Eine spezielle Art von Eventlistener.", "Ein Fehlerbehandlungsmechanismus."],
+    "points": 20
   },
   {
-    "question": "Welche Methode wird verwendet, um ein JavaScript-Objekt in einen JSON-String umzuwandeln?",
-    "answers": [
-      "JSON.stringify()",
-      "JSON.parse()",
-      "JSON.convert()",
-      "JSON.toString()"
-    ]
+    "question": "Was gibt 'typeof []' zurück?",
+    "answers": ["object", "array", "list", "undefined"],
+    "points": 15
+  },
+  {
+    "question": "Welches Schlüsselwort wird verwendet, um eine Funktion zu exportieren?",
+    "answers": ["export", "module", "public", "expose"],
+    "points": 10
+  },
+  {
+    "question": "Wie lässt sich eine Zahl in einen String umwandeln?",
+    "answers": ["String(123)", "parseInt('123')", "toNumber('123')", "int('123')"],
+    "points": 10
+  },
+  {
+    "question": "Welche Methode entfernt das letzte Element eines Arrays?",
+    "answers": ["pop()", "shift()", "remove()", "cut()"],
+    "points": 10
+  },
+  {
+    "question": "Wie kann man überprüfen, ob eine Variable ein Array ist?",
+    "answers": ["Array.isArray(var)", "var instanceof Array", "typeof var === 'array'", "var.isArray()"],
+    "points": 20
+  },
+  {
+    "question": "Wie kann man alle Elemente eines Arrays zu einem String verbinden?",
+    "answers": ["join()", "concat()", "combine()", "merge()"],
+    "points": 15
+  },
+  {
+    "question": "Wie erstellt man ein Objekt in JavaScript?",
+    "answers": ["let obj = {}", "let obj = []", "let obj = new Array()", "let obj = createObject()"],
+    "points": 10
+  },
+  {
+    "question": "Was gibt 'typeof undefined' zurück?",
+    "answers": ["undefined", "null", "object", "string"],
+    "points": 10
+  },
+  {
+    "question": "Was bedeutet 'event bubbling'?",
+    "answers": ["Ein Ereignis steigt vom Ziel-Element zur Wurzel auf.", "Ein Ereignis bleibt nur auf dem Ziel-Element.", "Ein Ereignis startet bei der Wurzel und geht zum Ziel.", "Ein Ereignis wird automatisch gestoppt."],
+    "points": 25
+  },
+  {
+    "question": "Was macht 'setTimeout()'?",
+    "answers": ["Führt eine Funktion nach einer Verzögerung aus.", "Wiederholt eine Funktion regelmäßig.", "Beendet eine laufende Funktion.", "Wartet synchron vor Ausführung."],
+    "points": 20
+  },
+  {
+    "question": "Wie kann man einen Event Listener entfernen?",
+    "answers": ["removeEventListener()", "detachListener()", "deleteEvent()", "event.remove()"],
+    "points": 15
+  },
+  {
+    "question": "Wie prüft man, ob zwei Werte exakt gleich sind (inkl. Typ)?",
+    "answers": ["===", "==", "equals()", "typeof ==="],
+    "points": 10
   }
-]
+];
+
+
+
 
 const permutationsArray = [
     [3, 1, 2, 0],
@@ -231,6 +203,7 @@ function showQuestionTemplate(index) {
     return `
       <h2>${index + 1}. Frage:</h2>
       <p>${questions[index].question}</p>
+      <p>Punkte: ${questions[index].points}</p>
     `;
   }
 
@@ -265,6 +238,9 @@ function showQuestionTemplate(index) {
   }
 
   function checkAnswer(i) {
+    for (let j = 0; j < 4; j++) {
+      document.getElementById("button" + j).disabled = true;
+    }
     if (i === 0) {
       let greenButton = document.getElementById("button" + i);
       greenButton.classList.add("greenButton")
