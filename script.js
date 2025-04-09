@@ -239,14 +239,12 @@ function showQuestionTemplate(index) {
 
     showAnswer.innerHTML =""
     showAnswer.innerHTML += showAnswerTemplate(index);
-    permutationsCounter ++
+    permutationsCounter = permutationsCounter < permutationsArray.length - 1 ? permutationsCounter + 1 : 0;
   }
 
   function showAnswerTemplate(index){
     permutationList = permutationsArray[permutationsCounter]
     let buttons=""
-
-// permutationsarray =  [0, 1, 3, 2]
 
     for (let i = 0; i < 4; i++) {
       let answerIndex = permutationList[i];
