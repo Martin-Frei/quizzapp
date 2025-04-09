@@ -170,11 +170,16 @@ const permutationsArray = [
   ];
   
 let permutationsCounter = 0;
+let resultCounter = 0;
+let userResultCounter = 0;
 
 function showResult(){
     let resultIn = document.getElementById("result");
     resultIn.classList.remove("result-out")
     resultIn. classList.add("result-in");
+
+    let resultShow = document.getElementById("showResult")
+    resultShow.innerHTML = showResultTemplate()
 
     // let overlayOn =document.getElementById("body");
     // overlayOn.classList.add("overlay");
@@ -188,6 +193,25 @@ function hideResult(){
     // let overlayOff =document.getElementById("body");
     // overlayOff.classList.remove("overlay");
 }
+
+function showResultTemplate(){
+  let showResult = document.getElementById("showResult");
+  showResult ="";
+
+  return`
+        <tr>
+          <td>Aktuelle Punkte:</td>
+        </tr>
+        <tr>
+          <td>${userResultCounter} von ${resultCounter}</td>
+        </tr>
+  `
+}
+
+
+
+
+
  function startQuizz(index){
     showQuestion(index);
     showAnswer(index);
@@ -197,6 +221,7 @@ function showQuestion(index){
     let showQuestion = document.getElementById("questionSection");
     showQuestion.innerHTML = ""
     showQuestion.innerHTML = showQuestionTemplate(index);
+    resultCounter += questions[index].points
 }
 
 function showQuestionTemplate(index) {
@@ -221,7 +246,7 @@ function showQuestionTemplate(index) {
 
     for (let i = 0; i < 4; i++) {
       let answerIndex = permutationList[i];
-      buttons += `<button id="button${answerIndex}" onclick="checkAnswer(${answerIndex})">${questions[index].answers[answerIndex]}</button>`;
+      buttons += `<button id="button${answerIndex}" onclick="checkAnswer(${answerIndex},${index})">${questions[index].answers[answerIndex]}</button>`;
     }
 
     return `
@@ -237,13 +262,14 @@ function showQuestionTemplate(index) {
 
   }
 
-  function checkAnswer(i) {
+  function checkAnswer(i, index) {
     for (let j = 0; j < 4; j++) {
       document.getElementById("button" + j).disabled = true;
     }
     if (i === 0) {
       let greenButton = document.getElementById("button" + i);
-      greenButton.classList.add("greenButton")
+      greenButton.classList.add("greenButton");
+      userResultCounter += questions[index].points;
     } else {
       let redButton = document.getElementById("button" + i);
       redButton.classList.add("redButton")
@@ -253,6 +279,7 @@ function showQuestionTemplate(index) {
 function nextQuestion(index){
     let newIndex = index < questions.length - 1 ? index + 1 : 0;   
     startQuizz(newIndex);
+    hideResult();
 }
 
 function nextPermutation(index){
